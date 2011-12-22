@@ -5,7 +5,7 @@
 
 # Load data files
 . lang.bash     # Language variables
-. function.bash # Various functions
+. functions.bash # Various functions
 . convert.bash  # Function to convert audio files
 
 # Exit if no arguments provided
