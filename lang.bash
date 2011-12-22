@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#   lang.bash - Language variables (ISO 639-1) sourced by audio-convert.bash
+#   lang.bash - Language variables (ISO 639-1) sourced by bac.bash
 #
 
 ## Default: en

@@ -1,10 +1,10 @@
 #!/bin/bash
 #
 #   caf.bash - A function to convert audio files, 
-#+  which is sourced by audio-convert.bash
+#+  which is sourced by bac.bash
 #
 
-caf() 
+caf()
 {
     # Format in_file = mp3
     if [ "`file -b "$1" | grep 'MP3'`" != "" ] || [ "`echo $1 | grep -i '\.mp3$'`" != "" ]

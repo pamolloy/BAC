@@ -4,9 +4,9 @@
 #
 
 # Load data files
-. lang.bash     # Language variables
-. functions.bash # Various functions
-. convert.bash  # Function to convert audio files
+. lang.bash         # Language variables
+. functions.bash    # Various functions
+. convert.bash      # Function to convert audio files
 
 # Exit if no arguments provided
 if [ $# = 0 ]

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#   function.bash - Various functions to be sourced by audio-convert.bash
+#   functions.bash - Various functions to be sourced by bac.bash
 #
 
 get_ogg_quality ()
