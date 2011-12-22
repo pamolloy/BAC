@@ -1,0 +1,26 @@
+
+DESCRIPTION
+
+    A program to convert wav, ogg, mp3, mpc, flac, ape or wma files into wav,
+    ogg, mp3, mpc, flac or ape files. with an easy to use interface it's
+    actually possible to fill in the tags for a few formats, and choose the
+    quality of compression.
+
+SOFTWARE REQUIREMENTS
+
+    bash
+    zenity
+    awk
+    mplayer (optional) - for WMA support
+    lame (optional) - for MP3 support
+    vorbis-tools (optional) - for OGG support
+    id3tag (optional) - for MP3 support
+    musepack-tools (optional) - for MPC support
+    flac (optional) - for FLAC support
+    mac
+
+CREDITS
+
+    wom_audioconverter, by yekcim <yeknan@yahoo.fr>, http://yeknan.free.fr
+    audio-convert, by thetroublemaker, http://freecode.com/project/audio-convert
+
