@@ -2,6 +2,8 @@
 #
 # bac.bash - Batch Audio Converter
 #
+# TODO
+#   - Save meta data to new files
 
 # Load data files
 . lang.bash         # Language variables
@@ -72,7 +74,12 @@ convert ()
         jpg)
             rm "$FILE"
             ;;
+        # desktop.ini
         ini)
+            rm "$FILE"
+            ;;
+        # Thumbs.db
+        db)
             rm "$FILE"
             ;;
     esac
