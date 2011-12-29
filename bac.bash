@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/bash
 #
 # bac.bash - Batch Audio Converter
 #
@@ -27,7 +27,7 @@ search ()
 {
     DIR=$1
     
-    for FILE in `ls DIR`
+    for FILE in "$DIR"*
     do
         if [ -d "$FILE" ]
         then
@@ -38,14 +38,14 @@ search ()
                 exit ${SYM[1]}
             else
                 # If file is a directory, search recursively
-                search $FILE
+                echo "Searching: $FILE"
+                search "$FILE"/
             fi
-        else
+        elif [ -f "$FILE" ]
+        then
             # If file is a regular file convert it
-            if [ -f "$FILE" ]
-            then
-                convert $FILE
-            fi
+            echo "Checking: $FILE"
+            convert "$FILE"
         fi
     done
 }
@@ -57,13 +57,16 @@ convert ()
 
     case "${FILE##*.}" in
         mp3)
-            mp3_ogg $BASE
+            echo "Converting: $FILE"
+            mp3_ogg "$BASE"
             ;;
         wma)
-            wma_ogg $BASE
+            echo "Converting: $FILE"
+            wma_ogg "$BASE"
             ;;
         wav)
-            wav_flac $BASE
+            echo "Converting: $FILE"
+            wav_flac "$BASE"
             ;;
     esac
 }
