@@ -22,29 +22,22 @@ ogg_encode ()
 mp3_ogg ()
 {
     lame --decode "$1".mp3
-    if [ $? -eq 0 ]
-    then
-        rm "$1".mp3
-    fi
-    
     ogg_encode "$1".wav
     if [ $? -eq 0 ]
     then
+        rm "$1".mp3
         rm "$1".wav
     fi
 }
 
 wma_ogg ()
 {
+    # MPlayer always returns an exit status of 0
     mplayer -quiet -ao pcm:file="$1".wav -vc null -vo null "$1".wma
-    if [ $? -eq 0 ]
-    then
-        rm "$1".wma
-    fi
-    
     ogg_encode "$1".wav
     if [ $? -eq 0 ]
     then
+        rm "$1".wma
         rm "$1".wav
     fi
 }
