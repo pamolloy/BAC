@@ -8,7 +8,8 @@
 wav_flac ()
 {
     flac --keep-foreign-metadata --best --force --silent "$1".wav
-    if [ `flac --test "$1".flac` ]
+    flac --test --silent "$1".flac
+    if [ $? -eq 0 ]
     then
         rm "$1".wav
     fi
@@ -21,34 +22,26 @@ ogg_encode ()
 
 mp3_ogg ()
 {
-    if [ -f "$1".wav ]
+    echo Converting: "$1".mp3
+    lame --decode "$1".mp3
+    ogg_encode "$1".wav
+    if [ $? -eq 0 ]
     then
         rm "$1".mp3
-    else
-        lame --decode "$1".mp3
-        ogg_encode "$1".wav
-        if [ $? -eq 0 ]
-        then
-            rm "$1".mp3
-            rm "$1".wav
-        fi
+        rm "$1".wav
     fi
 }
 
 wma_ogg ()
 {
-    if [ -f "$1".wav ]
+    echo Converting: "$1".wma
+    # MPlayer always returns an exit status of 0
+    mplayer -quiet -ao pcm:file="$1".wav -vc null -vo null "$1".wma
+    ogg_encode "$1".wav
+    if [ $? -eq 0 ]
     then
         rm "$1".wma
-    else
-        # MPlayer always returns an exit status of 0
-        mplayer -quiet -ao pcm:file="$1".wav -vc null -vo null "$1".wma
-        ogg_encode "$1".wav
-        if [ $? -eq 0 ]
-        then
-            rm "$1".wma
-            rm "$1".wav
-        fi
+        rm "$1".wav
     fi
 }
 

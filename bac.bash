@@ -45,14 +45,14 @@ search ()
             fi
         elif [ -f "$FILE" ]
         then
-            # If file is a regular file convert it
+            # If file is a regular file verify it
             echo "Checking: $FILE"
-            convert "$FILE"
+            verify "$FILE"
         fi
     done
 }
 
-convert ()
+verify ()
 {
     FILE=$1
     BASE="${FILE%.*}"
@@ -60,12 +60,20 @@ convert ()
     #TODO (PM) Case insensitive matching
     case "${FILE##*.}" in
         mp3)
-            echo "Converting: $FILE"
-            mp3_ogg "$BASE"
+            if [ -f "$FILE".wav ]
+            then
+                rm "$FILE".mp3
+            else
+                mp3_ogg "$BASE"
+            fi
             ;;
         wma)
-            echo "Converting: $FILE"
-            wma_ogg "$BASE"
+            if [ -f "$FILE".wav ]
+            then
+                rm "$FILE".wma
+            else
+                wma_ogg "$BASE"
+            fi
             ;;
         wav)
             echo "Converting: $FILE"
