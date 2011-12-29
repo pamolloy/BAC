@@ -16,29 +16,39 @@ wav_flac ()
 
 ogg_encode ()
 {
-    oggenc --quality 5 "$1"
+    oggenc --quality 8 "$1"
 }
 
 mp3_ogg ()
 {
-    lame --decode "$1".mp3
-    ogg_encode "$1".wav
-    if [ $? -eq 0 ]
+    if [ -f "$1".wav ]
     then
         rm "$1".mp3
-        rm "$1".wav
+    else
+        lame --decode "$1".mp3
+        ogg_encode "$1".wav
+        if [ $? -eq 0 ]
+        then
+            rm "$1".mp3
+            rm "$1".wav
+        fi
     fi
 }
 
 wma_ogg ()
 {
-    # MPlayer always returns an exit status of 0
-    mplayer -quiet -ao pcm:file="$1".wav -vc null -vo null "$1".wma
-    ogg_encode "$1".wav
-    if [ $? -eq 0 ]
+    if [ -f "$1".wav ]
     then
         rm "$1".wma
-        rm "$1".wav
+    else
+        # MPlayer always returns an exit status of 0
+        mplayer -quiet -ao pcm:file="$1".wav -vc null -vo null "$1".wma
+        ogg_encode "$1".wav
+        if [ $? -eq 0 ]
+        then
+            rm "$1".wma
+            rm "$1".wav
+        fi
     fi
 }
 
