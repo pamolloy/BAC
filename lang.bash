@@ -10,11 +10,11 @@ QUALITY="How many quality would you like?"
 
 # Error handling
 NO_DEP[1]=84
-NO_DEP[2]="Missing a required dependency."
+NO_DEP[2]="Missing a required dependency:"
 NO_ARGS[1]=85
 NO_ARGS[2]="Please select at least one input."
-FILE_EXIST[1]=86
-FILE_EXIST[2]="Output filename already exists in present working directory."
+SYM[1]=87
+SYM[2]="Symbolic links can not be processed."
 
 case "$LANG" in
     fr)
