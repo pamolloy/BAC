@@ -27,7 +27,7 @@ depchk ()
 
 search ()
 {
-    DIR=$1
+    DIR="$1"
     
     for FILE in "$DIR"*
     do
@@ -57,6 +57,7 @@ verify ()
     FILE=$1
     BASE="${FILE%.*}"
 
+    # Remove lossy files if lossless copy exists
     #TODO (PM) Case insensitive matching
     case "${FILE##*.}" in
         mp3)
@@ -100,6 +101,6 @@ do
 done
 
 # Search input directory
-search $1
+search "$1"
 
 exit 0
