@@ -60,7 +60,7 @@ verify ()
     #TODO (PM) Case insensitive matching
     case "${FILE##*.}" in
         mp3)
-            if [ -f "$FILE".wav ]
+            if [ -f "$BASE".wav ]
             then
                 rm "$FILE".mp3
             else
@@ -68,7 +68,7 @@ verify ()
             fi
             ;;
         wma)
-            if [ -f "$FILE".wav ]
+            if [ -f "$BASE".wav ]
             then
                 rm "$FILE".wma
             else
