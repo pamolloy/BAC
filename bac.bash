@@ -55,6 +55,7 @@ convert ()
     FILE=$1
     BASE="${FILE%.*}"
 
+    #TODO (PM) Case insensitive matching
     case "${FILE##*.}" in
         mp3)
             echo "Converting: $FILE"
@@ -67,6 +68,12 @@ convert ()
         wav)
             echo "Converting: $FILE"
             wav_flac "$BASE"
+            ;;
+        jpg)
+            rm "$FILE"
+            ;;
+        ini)
+            rm "$FILE"
             ;;
     esac
 }
