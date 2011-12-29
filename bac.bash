@@ -62,7 +62,7 @@ verify ()
         mp3)
             if [ -f "$BASE".wav ]
             then
-                rm "$FILE".mp3
+                rm "$BASE".mp3
             else
                 mp3_ogg "$BASE"
             fi
@@ -70,7 +70,7 @@ verify ()
         wma)
             if [ -f "$BASE".wav ]
             then
-                rm "$FILE".wma
+                rm "$BASE".wma
             else
                 wma_ogg "$BASE"
             fi
