@@ -56,6 +56,7 @@ verify ()
 {
     FILE=$1
     BASE="${FILE%.*}"
+    FILENAME=`basename $FILE`
 
     # Remove lossy files if lossless copy exists
     #TODO (PM) Case insensitive matching
@@ -65,36 +66,36 @@ verify ()
             then
                 rm "$BASE".mp3
             else
-                echo "Convert: $FILE"
+                echo "Convert: $FILENAME"
                 mp3_ogg "$BASE"
             fi
             ;;
         wma)
             if [ -f "$BASE".flac ]
             then
-                echo "Remove: $FILE"
-                rm "$BASE".wma
+                echo "Remove: $FILENAME"
+                rm "$FILE"
             else
-                echo "Convert: $FILE"
+                echo "Convert: $FILENAME"
                 wma_ogg "$BASE"
             fi
             ;;
         wav)
-            echo "Convert: $FILE"
+            echo "Convert: $FILENAME"
             wav_flac "$BASE"
             ;;
         jpg)
-            echo "Remove: $FILE"
+            echo "Remove: $FILENAME"
             rm "$FILE"
             ;;
         # desktop.ini
         ini)
-            echo "Remove: $FILE"
+            echo "Remove: $FILENAME"
             rm "$FILE"
             ;;
         # Thumbs.db
         db)
-            echo "Remove: $FILE"
+            echo "Remove: $FILENAME"
             rm "$FILE"
             ;;
     esac
