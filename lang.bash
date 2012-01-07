@@ -15,6 +15,8 @@ NO_ARGS[1]=85
 NO_ARGS[2]="Please select at least one input."
 SYM[1]=87
 SYM[2]="Symbolic links can not be processed."
+CONVERT[1]=88
+CONVERT[2]="Conversion failed for:"
 
 case "$LANG" in
     fr)

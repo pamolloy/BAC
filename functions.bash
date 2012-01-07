@@ -2,8 +2,6 @@
 #
 #   functions.bash - Various functions to be sourced by bac.bash
 #
-# TODO
-#   - Test each file before removing it
 
 wav_flac ()
 {
@@ -42,6 +40,9 @@ wma_ogg ()
     then
         rm "$1".wma
         rm "$1".wav
+    else
+        echo ${CONVERT[2]} "$1"
+        exit ${CONVERT[1]}
     fi
 }
 
