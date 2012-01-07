@@ -46,7 +46,7 @@ search ()
         elif [ -f "$FILE" ]
         then
             # If file is a regular file verify it
-            echo "Checking: $FILE"
+            echo "Check: $FILE"
             verify "$FILE"
         fi
     done
@@ -65,30 +65,36 @@ verify ()
             then
                 rm "$BASE".mp3
             else
+                echo "Convert: $FILE"
                 mp3_ogg "$BASE"
             fi
             ;;
         wma)
-            if [ -f "$BASE".wav ]
+            if [ -f "$BASE".flac ]
             then
+                echo "Remove: $FILE"
                 rm "$BASE".wma
             else
+                echo "Convert: $FILE"
                 wma_ogg "$BASE"
             fi
             ;;
         wav)
-            echo "Converting: $FILE"
+            echo "Convert: $FILE"
             wav_flac "$BASE"
             ;;
         jpg)
+            echo "Remove: $FILE"
             rm "$FILE"
             ;;
         # desktop.ini
         ini)
+            echo "Remove: $FILE"
             rm "$FILE"
             ;;
         # Thumbs.db
         db)
+            echo "Remove: $FILE"
             rm "$FILE"
             ;;
     esac
