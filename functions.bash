@@ -20,7 +20,6 @@ ogg_encode ()
 
 mp3_ogg ()
 {
-    echo Converting: "$1".mp3
     lame --decode "$1".mp3
     ogg_encode "$1".wav
     if [ $? -eq 0 ]
@@ -32,7 +31,6 @@ mp3_ogg ()
 
 wma_ogg ()
 {
-    echo Converting: "$1".wma
     # MPlayer always returns an exit status of 0
     mplayer -quiet -ao pcm:file="$1".wav -vc null -vo null "$1".wma
     ogg_encode "$1".wav

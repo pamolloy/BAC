@@ -4,6 +4,7 @@
 #
 # TODO
 #   - Save meta data to new files
+#   - Manage encrypted files
 
 # Load data files
 . lang.bash         # Language variables
@@ -56,7 +57,7 @@ verify ()
 {
     FILE=$1
     BASE="${FILE%.*}"
-    FILENAME=`basename $FILE`
+    FILENAME="${FILE##*/}"
 
     # Remove lossy files if lossless copy exists
     #TODO (PM) Case insensitive matching
