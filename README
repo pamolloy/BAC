@@ -2,15 +2,15 @@
 DESCRIPTION
 
     A script to convert regular files ending in a WAV extension to FLAC, and
-    MP3, WMA to OGG.
+    MP3, WMA to OGG. And remove files ending with INI, DB and JPG extensions.
 
 SOFTWARE REQUIREMENTS
 
     bash
-    mplayer (optional) - for WMA support
-    lame (optional) - for MP3 support
-    vorbis-tools (optional) - for OGG support
-    flac (optional) - for FLAC support
+    mplayer - for WMA support
+    lame - for MP3 support
+    vorbis-tools - for OGG support
+    flac - for FLAC support
 
 CREDITS
 
