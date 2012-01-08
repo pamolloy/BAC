@@ -57,7 +57,7 @@ verify ()
 {
     FILE=$1
     BASE="${FILE%.*}"
-    FILENAME="${FILE##*/}"
+    FILENAME="${FILE##*/}" #TODO (PM) Relative to $1
 
     # Remove lossy files if lossless copy exists
     #TODO (PM) Case insensitive matching
@@ -72,6 +72,7 @@ verify ()
             fi
             ;;
         wma)
+            # WAV should have already been converted to FLAC
             if [ -f "$BASE".flac ]
             then
                 echo "Remove: $FILENAME"

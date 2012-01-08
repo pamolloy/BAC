@@ -15,7 +15,7 @@ wav_flac ()
 
 ogg_encode ()
 {
-    oggenc --quality 8 "$1"
+    oggenc --quality 8 --output="$2" "$1"
 }
 
 mp3_ogg ()
@@ -31,13 +31,14 @@ mp3_ogg ()
 
 wma_ogg ()
 {
-    # MPlayer always returns an exit status of 0
-    mplayer -quiet -ao pcm:file="$1".wav -vc null -vo null "$1".wma
-    ogg_encode "$1".wav
+    # MPlayer always returns an exit status of 0 and splits filenames with
+    # commas when trying to output a new file using -ao
+    mplayer -quiet -ao pcm -vc null -vo null "$1".wma
+    ogg_encode audiodump.wav "$1".ogg
     if [ $? -eq 0 ]
     then
         rm "$1".wma
-        rm "$1".wav
+        rm audiodump.wav
     else
         echo ${CONVERT[2]} "$1"
         exit ${CONVERT[1]}
