@@ -36,7 +36,7 @@ wma_ogg ()
     #mplayer -quiet -ao pcm -vc null -vo null "$1".wma
     
     ffmpeg -i "$1".wma "$1".wav
-    ogg_encode "$1".ogg
+    ogg_encode "$1".wav
     if [ $? -eq 0 ]
     then
         rm "$1".wma
