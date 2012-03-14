@@ -1,8 +1,9 @@
 
 DESCRIPTION
 
-    A script to convert regular files ending in a WAV extension to FLAC, and
-    MP3, WMA to OGG. And remove files ending with INI, DB and JPG extensions.
+    A script to recursively convert regular files ending in a WAV
+    extension to FLAC, and MP3, WMA to OGG. And remove files ending
+    with INI, DB and JPG extensions.
 
 SOFTWARE REQUIREMENTS
 
@@ -14,6 +15,6 @@ SOFTWARE REQUIREMENTS
 
 CREDITS
 
-    wom_audioconverter, by yekcim <yeknan@yahoo.fr>, http://yeknan.free.fr
-    audio-convert, by thetroublemaker, http://freecode.com/project/audio-convert
+    audio-convert, by thetroublemaker,
+        http://freecode.com/projects/audio-convert
 
